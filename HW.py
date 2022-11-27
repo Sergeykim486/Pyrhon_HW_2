@@ -1,6 +1,6 @@
-import sys
 import os
-List1 = ['1. Сумма всех цифр вещественного числа','2. task 2','3. task 3','4. task 4','5. task 5','6. Выход']
+Task = 0
+List1 = ['1. Сумма всех цифр вещественного числа','2. Набор произведений чисел от 1 до N','3. Cписок из n чисел последовательности (1+1/n)^n','4. task 4','5. task 5','6. Выход']
 os.system('cls')
 
 def enter_key_to_continue():
@@ -8,7 +8,7 @@ def enter_key_to_continue():
     main()
 
 def error(x):
-    print('\n' * 100)
+    os.system('cls')
     print(f'\n\n\nВНИМАНИЕ!!!\n    Вы ввели не существующую команду {x}... \n    Выберите команду из списка.')
     enter_key_to_continue()
 
@@ -45,8 +45,18 @@ def Task02():
         List1.insert(i, temp)
     print(f'=================================================\n{List1}\n=================================================')
 
-# def Task03():
-
+def Task03():
+    print('Задайте список из n чисел последовательности (1+1/n)^n и выведите на экран их сумму.'
+          '\nПример:'
+          '\n- Для n = 6: [2.0, 2.25, 2.37037037037037, 2.44140625, 2.4883199999999994, 2.5216263717421135]')
+    num = int(input('Введите значение целого числа "N" ->  '))
+    List2 = []
+    for i in range(num):
+        j = i + 1
+        temp = (1 + 1 / j) ** j
+        List2.insert(i, temp)
+    print(f'=================================================\n{List2}\n=================================================')
+    
 # def Task04():
 
 # def Task05():
@@ -55,31 +65,38 @@ def Task02():
 
 def choice(x):
     os.system('cls')
-    print(f'=================================================\n{List1[x-1]}\n=================================================')
+    if x <= len(List1):
+        print(f'=================================================\n{List1[x-1]}\n=================================================')
     if x == 1:
         Task01()
+        enter_key_to_continue()
     elif x == 2:
         Task02()
+        enter_key_to_continue()
     elif x == 3:
-        print('Task 3')
+        Task03()
+        enter_key_to_continue()
     elif x == 4:
         print('Task 4')
+        enter_key_to_continue()
     elif x == 5:
         print('Task 5')
+        enter_key_to_continue()
     elif x == 6:
+        import sys
         sys.exit()
-    enter_key_to_continue()
+    else:
+        error(Task)
 
 def main():
     os.system('cls')
-    Task = int(0)
     print('================================================\n============ Г Л А В Н О Е  М Е Н Ю ============\n================================================\nВыберите действие...')
     print(*List1, sep='\n')
     print('================================================')
-    Task = int(input('Введите номер операции ->  '))
-    if 0 < Task <= len(List1):
-        choice(Task)
-    else:
-        error(Task)
+    try:
+        Task = int(input('Введите номер операции ->  '))
+    except:
+        Task = 0
+    choice(Task)
 
 main()
