@@ -1,6 +1,6 @@
 import os
 Task = 0
-List1 = ['1. Сумма всех цифр вещественного числа','2. Набор произведений чисел от 1 до N','3. Cписок из n чисел последовательности (1+1/n)^n','4. task 4','5. task 5','6. Выход']
+List1 = ['1. Сумма всех цифр вещественного числа','2. Набор произведений чисел от 1 до N','3. Cписок из n чисел последовательности (1+1/n)^n','4. Произведение двух позиций из списка.','5. task 5','6. Выход']
 os.system('cls')
 
 def enter_key_to_continue():
@@ -57,7 +57,30 @@ def Task03():
         List2.insert(i, temp)
     print(f'=================================================\n{List2}\n=================================================')
     
-# def Task04():
+def Task04():
+    print('Задайте список из N элементов, заполненных числами из промежутка [-N, N].'
+          '\nНайдите произведение элементов на указанных позициях.'
+          '\nПозиции хранятся в файле file.txt в одной строке одно число.'
+          '\n(для продвинутых - с файлом, вариант минимум - ввести позиции в консоли)'
+          '\n -2 -1 0 1 2 Позиции: 0,1 -> 2')
+    num = int(input('Введите значение целого числа "N" ->  '))
+    List2 = []
+    j = 0
+    for i in range(-num, num+1, 1):
+        List2.insert(j, i)
+        j = j + 1
+    Positions = []
+    with open("Positions.txt", "r") as file:
+        k = 0
+        for line in file:
+            str1 = line
+            Positions.insert(k,str1)
+            k = k + 1
+    Positions = [line.rstrip() for line in Positions]
+    int_pos = []
+    for lines in range(len(Positions)):
+        int_pos.insert(lines, int(Positions[lines]))
+    print(f'=================================================\n{List2}\n{int_pos[0]}, {int_pos[1]}   =>   {List2[int_pos[0]] * List2[int_pos[1]]}\n=================================================')
 
 # def Task05():
 
@@ -77,7 +100,7 @@ def choice(x):
         Task03()
         enter_key_to_continue()
     elif x == 4:
-        print('Task 4')
+        Task04()
         enter_key_to_continue()
     elif x == 5:
         print('Task 5')
