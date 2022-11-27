@@ -14,21 +14,33 @@ def error(x):
 # ========================= ДОМАШНЕЕ ЗАДАНИЕ ===========================
 
 def Task01():
+    num = float(input('Введите целое или вещественное число ->  '))
+    n = num
+    x = 1
+    while x != 0:
+        n = n*10
+        x = n%1
+    n = int(n)
+    result = 0
+    while n != 0:
+        result = result + n%10
+        n = n//10
+    print(f'Сумма всех цифр числа {num} = {result}')
 
-def Task02():
+# def Task02():
 
-def Task03():
+# def Task03():
 
-def Task04():
+# def Task04():
 
-def Task05():
+# def Task05():
 
 # ======================================================================
 
 def choice(x):
     print(f'\n\n\n=================================================\n{List1[x-1]}')
     if x == 1:
-        print('Task 1')
+        Task01()
     elif x == 2:
         print('Task 2')
     elif x == 3:
